@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMaster | Academic Premium Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,600;0,800;1,800&family=Fira+Code:wght@500;700&family=Montserrat:wght@700;900&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-glow"></div>
+    <div class="grid-overlay"></div>
+
+    <nav class="navbar">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo scanner-logo">
+    <span class="logo-text">STUDY<span class="logo-bold">MASTER</span></span>
+    <span class="scanner-line"></span>
+</a>
+            
+            <div class="nav-links">
+                <a href="#about" class="nav-item">Про систему</a>
+                <a href="#services" class="nav-item">Послуги</a>
+                <a href="#calculator" class="nav-item">Вартість</a>
+                <a href="#faq" class="nav-item">FAQ</a>
+            </div>
+
+            <div class="nav-actions">
+                <button id="navOrderBtn" class="btn btn-primary">
+                    <span>Замовити</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-container">
+            
+            <div class="hero-text-side">
+                <div class="badge">v2.0 System Online</div>
+                
+                <h1 class="hero-title">
+                    Твій Академічний <br> Рівень 
+                    <span class="typewriter-container">
+                        <span class="text-gradient type-text"></span>
+                    </span>
+                </h1>
+                
+                <p class="hero-desc">
+                    Ми пишемо чистий код, унікальні тексти та точні розрахунки, поки ви займаєтесь важливим. Повна анонімність та підтримка 24/7.
+                </p>
+
+                <ul class="hero-features">
+                    <li><i class="fas fa-check-circle"></i> Гарантія унікальності (Unicheck / Strike)</li>
+                    <li><i class="fas fa-code"></i> Code Review від Senior розробників</li>
+                    <li><i class="fas fa-lock"></i> Повне шифрування даних клієнта</li>
+                </ul>
+
+                <div class="hero-btns">
+                    <a href="#calculator" class="btn btn-primary btn-lg">Розрахувати ціну</a>
+                    <a href="#services" class="btn btn-outline btn-lg">Всі послуги</a>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-num">5k+</span>
+                        <span class="stat-label">Проектів</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">98%</span>
+                        <span class="stat-label">Успіху</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">15хв</span>
+                        <span class="stat-label">Відповідь</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual-side">
+                <div class="ide-window">
+                    <div class="ide-header">
+                        <div class="window-controls">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="file-tabs">
+                            <div class="tab active"><i class="fab fa-python"></i> success.py</div>
+                            <div class="tab"><i class="fab fa-css3-alt"></i> style.css</div>
+                        </div>
+                    </div>
+
+                    <div class="ide-body">
+                        <div class="line-numbers">
+                            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10
+                        </div>
+                        <div class="code-content">
+                            <span class="kwd">class</span> <span class="cls">StudentSuccess</span>:<br>
+                            &nbsp;&nbsp;<span class="kwd">def</span> <span class="func">__init__</span>(<span class="var">self</span>, <span class="arg">task</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">self</span>.status = <span class="str">"Relaxed"</span><br><br>
+                            &nbsp;&nbsp;<span class="kwd">def</span> <span class="func">execute</span>(<span class="var">self</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">result</span> = <span class="cls">StudyMaster</span>.<span class="func">solve</span>(<span class="var">self</span>.task)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwd">return</span> <span class="var">result</span>.<span class="func">get_grade</span>(<span class="str">"A+"</span>)<br><br>
+                            <span class="com"># Start Process</span><br>
+                            <span class="func">print</span>(<span class="cls">StudentSuccess</span>(<span class="str">"CourseWork"</span>).<span class="func">execute</span>())
+                        </div>
+                    </div>
+
+                    <div class="ide-terminal">
+                        <div class="terminal-header">TERMINAL</div>
+                        <div class="terminal-text">
+                            <span class="path">user@pc:~$</span> python success.py<br>
+                            <span class="success">>> SUCCESS: Grade "A+" received!</span><br>
+                            <span class="blink">_</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-glow-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Чому обирають <span class="text-accent">Нас</span></h2>
+                <p class="section-subtitle">Ми не просто пишемо роботи. Ми гарантуємо результат.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <div class="icon-box">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Повна Анонімність</h3>
+                    <p>Ваші дані зашифровані. Ніхто не дізнається про наше співробітництво. Це наш пріоритет №1.</p>
+                </div>
+
+                <div class="feature-card glass active-card">
+                    <div class="icon-box">
+                        <i class="fas fa-meteor"></i>
+                    </div>
+                    <h3>Турбо Швидкість</h3>
+                    <p>Горимо по дедлайнах? Ми беремо замовлення "на вчора". Оперативний зв'язок 24/7.</p>
+                </div>
+
+                <div class="feature-card glass">
+                    <div class="icon-box">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>Якість та Унікальність</h3>
+                    <p>Жодного копіпасту. Всі роботи проходять перевірку на плагіат та рев'ю експерта.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="services" class="section bg-darker">
+        <div class="container">
+            <h2 class="section-title text-center">Наші <span class="text-gradient">Протоколи</span></h2>
+            
+            <div class="services-wrapper">
+                <div class="service-item">
+                    <div class="service-bg"></div>
+                    <div class="service-content">
+                        <i class="fas fa-code service-icon"></i>
+                        <h3>IT Розробка</h3>
+                        <ul>
+                            <li>Web-сайти (HTML/CSS/JS/React)</li>
+                            <li>Боти для Telegram/Discord</li>
+                            <li>Скрипти Python / C++ / C#</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-text" data-service="it">Детальніше &rarr;</button>
+                            <button class="btn-outline-sm btn-order-direct" data-title="IT Розробка">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-bg"></div>
+                    <div class="service-content">
+                        <i class="fas fa-file-alt service-icon"></i>
+                        <h3>Текстові Роботи</h3>
+                        <ul>
+                            <li>Курсові та Дипломні</li>
+                            <li>Реферати, Есе, Статті</li>
+                            <li>Презентації PowerPoint</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-text" data-service="text">Детальніше &rarr;</button>
+                            <button class="btn-outline-sm btn-order-direct" data-title="Текстові Роботи">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-bg"></div>
+                    <div class="service-content">
+                        <i class="fas fa-flask service-icon"></i>
+                        <h3>Точні Науки</h3>
+                        <ul>
+                            <li>Вища математика / Статистика</li>
+                            <li>Фізика, Хімія, Біологія</li>
+                            <li>Інженерні розрахунки</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-text" data-service="science">Детальніше &rarr;</button>
+                            <button class="btn-outline-sm btn-order-direct" data-title="Точні Науки">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-bg"></div>
+                    <div class="service-content">
+                        <i class="fas fa-language service-icon"></i>
+                        <h3>Переклади</h3>
+                        <ul>
+                            <li>Technical English</li>
+                            <li>Німецька / Польська мови</li>
+                            <li>Філологічні завдання</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-text" data-service="translate">Детальніше &rarr;</button>
+                            <button class="btn-outline-sm btn-order-direct" data-title="Переклади">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="section">
+        <div class="container calc-layout">
+            <div class="calc-info">
+                <h2>Розрахунок <span class="text-accent">Вартості</span></h2>
+                <p>Ціна формується прозоро. Оберіть тип завдання та терміновість.</p>
+                <div class="trust-badges">
+                    <div class="badge-item"><i class="fab fa-cc-visa"></i></div>
+                    <div class="badge-item"><i class="fab fa-cc-mastercard"></i></div>
+                    <div class="badge-item"><i class="fab fa-apple-pay"></i></div>
+                </div>
+            </div>
+
+            <div class="calc-box glass-panel">
+    <div class="calc-row">
+        <label>Тип роботи</label>
+        <div class="select-wrapper">
+            <select id="workType">
+        <option value="250">Лабораторна робота </option>
+        <option value="300">Практична робота </option>
+        <option value="300">Самостійна робота </option>
+        <option value="350">Контрольна робота </option>
+        <option value="1000">Звіт з практики </option>
+        <option value="1500">Курсова робота </option>
+        <option value="5000">Дипломна робота </option>
+        <option value="7000">Магістерська робота </option>
+    </select>
+        </div>
+    </div>
+
+    <div class="calc-row">
+        <div class="range-header">
+            <label>Кількість сторінок</label>
+            <span id="pagesValue" class="text-accent">10 стор.</span>
+        </div>
+        <input type="range" id="pagesRange" min="1" max="100" value="10" class="cyber-range">
+    </div>
+
+    <div class="calc-row">
+        <div class="range-header">
+            <label>Унікальність тексту</label>
+            <span id="uniqueValue" class="text-accent">70%</span>
+        </div>
+        <input type="range" id="uniqueRange" min="0" max="100" value="70" step="5" class="cyber-range">
+        <div class="range-labels">
+            <span>Копіпаст (0%)</span>
+            <span>Авторська (100%)</span>
+        </div>
+    </div>
+
+    <div class="calc-row">
+        <div class="range-header">
+            <label>Термін виконання</label>
+            <span id="daysValue" class="text-accent">5 днів</span>
+        </div>
+        <input type="range" id="daysRange" min="1" max="30" value="5" class="cyber-range">
+        <div class="range-labels">
+            <span>Терміново</span>
+            <span>Не спішно</span>
+        </div>
+    </div>
+
+    <div class="calc-total">
+        <span>Приблизна вартість:</span>
+        <div class="price-display">
+            <span id="finalPrice">0</span> <small>UAH</small>
+        </div>
+    </div>
+
+    <button id="calcOrderBtn" class="btn btn-primary btn-full">
+        Замовити розрахунок <i class="fas fa-bolt"></i>
+    </button>
+</div>
+    </section>
+
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Алгоритм <span class="text-accent">Дії</span></h2>
+                <p class="section-subtitle">Простий протокол співпраці. Від заявки до успішної здачі.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content glass">
+                        <h3><i class="fas fa-satellite-dish"></i> Сигнал (Заявка)</h3>
+                        <p>Ви залишаєте заявку на сайті або пишете в Telegram. Описуєте задачу та дедлайн.</p>
+                    </div>
+                </div>
+                
+                <div class="step-connector"></div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content glass">
+                        <h3><i class="fas fa-calculator"></i> Аналіз Даних</h3>
+                        <p>Ми оцінюємо складність, підбираємо автора та фіксуємо точну ціну без прихованих доплат.</p>
+                    </div>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content glass">
+                        <h3><i class="fas fa-code-branch"></i> Виконання</h3>
+                        <p>Автор пише роботу. Ви отримуєте проміжні результати (скріншоти/частини) для контролю.</p>
+                    </div>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content glass">
+                        <h3><i class="fas fa-check-circle"></i> Фінал</h3>
+                        <p>Ви отримуєте готову роботу, ми отримуємо оплату. Гарантія на правки — 14 днів.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section bg-darker">
+        <div class="container faq-layout">
+            <div class="faq-info">
+                <h2 class="section-title">База <span class="text-gradient">Знань</span></h2>
+                <p>Відповіді на часті запитання системи.</p>
+                <div class="neon-box-decoration">
+                    <span>?</span>
+                </div>
+            </div>
+            
+            <div class="faq-list">
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>💰 Як відбувається оплата?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Ми працюємо за безпечною схемою: <strong>50% передоплати</strong> для старту роботи. Решта 50% сплачується тільки після того, як ми надішлемо вам частину готової роботи або демо-версію (скріншоти коду, план, уривки тексту) для підтвердження якості.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>🔄 Чи платні правки?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Ні. Усі правки в межах початкового завдання виконуються <strong>безкоштовно та необмежено</strong>. Гарантійний термін — 14-30 днів після здачі роботи (залежно від типу завдання). Ми супроводжуємо вас до повного прийняття роботи викладачем.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>🛡️ Чи буде робота унікальною?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Так. Ми не використовуємо готові роботи з інтернету. Кожен текст пишеться з нуля і перевіряється через платні системи (Unicheck, StrikePlagiarism). Для IT-проектів ми пишемо унікальний код з коментарями, який проходить перевірку на плагіат коду.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>👨‍💻 Хто виконує замовлення?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Наші автори — це практикуючі програмісти (Middle/Senior рівень), аспіранти та викладачі ВНЗ. Ми підбираємо виконавця, який спеціалізується саме на вашій темі, щоб гарантувати професійний підхід.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>🔥 Потрібно "на вчора". Встигнете?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Так, у нас є послуга <strong>"Hot Deadline"</strong>. Ми можемо виконати невеликі завдання (лабораторні, есе, розрахунки) за 3-6 годин, а курсові — за 24-48 годин. Вкажіть терміновість при замовленні.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>🕵️ Це анонімно?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Абсолютно. Ваші особисті дані (ім'я, ВНЗ, контакти) ніколи не передаються третім особам, навіть виконавцю. Спілкування відбувається через менеджера. Після завершення угоди всі файли видаляються з наших серверів.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>💻 Як ви робите програмний код?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Ми надаємо повний архів проекту. У комплект входить: вихідний код, файл README з інструкцією по запуску, скріншоти роботи програми. За потреби можемо записати відео-пояснення, як працює код, щоб ви могли легко захистити його.</p>
+        </div>
+    </div>
+
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>💸 Що як робота не підійде?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>У випадку, якщо ми не змогли виконати вимоги або робота не була зарахована з нашої вини (навіть після правок), ми гарантуємо <strong>100% повернення коштів</strong>. Це прописано в наших правилах.</p>
+        </div>
+    </div>
+    
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>📝 Як почати співпрацю?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Залиште заявку на сайті або напишіть нам у Telegram. Менеджер оцінить завдання, назве точну ціну та підбере автора. Після внесення передоплати автор одразу приступає до роботи.</p>
+        </div>
+    </div>
+    
+    <div class="faq-card glass">
+        <div class="faq-header">
+            <h4>🎓 Чи робите ви презентації?</h4>
+            <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-body">
+            <p>Так, ми робимо презентації у PowerPoint, промови для захисту, анотації та відгуки керівників. Це можна замовити окремо або в комплекті з дипломною роботою зі знижкою.</p>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo">STUDY<span class="text-accent">MASTER</span></div>
+                <p class="footer-desc">Твій надійний партнер у навчанні. Технологічний підхід до освіти.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Навігація</h4>
+                <a href="#services">Послуги</a>
+                <a href="#calculator">Ціни</a>
+                <a href="#about">Про нас</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Контакти</h4>
+                <a href="https://t.me/username" target="_blank"><i class="fab fa-telegram"></i> Telegram Bot</a>
+                <a href="mailto:support@studymaster.com"><i class="fas fa-envelope"></i> support@studymaster.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 StudyMaster Inc. All Systems Operational.</p>
+        </div>
+    </footer>
+
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-window">
+            <button id="closeModalBtn" class="modal-close">&times;</button>
+            
+            <div class="modal-header">
+                <h3>Нове замовлення</h3>
+                <p>Заповніть форму і ми зв'яжемося за 10 хв.</p>
+            </div>
+            
+            <form id="orderForm" class="modal-form">
+                <div class="input-group">
+                    <input type="text" placeholder=" " required>
+                    <label>Ваше Ім'я</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" placeholder=" " required>
+                    <label>Telegram / Viber</label>
+                </div>
+                
+                <div class="input-group">
+                    <textarea placeholder=" " rows="3" required></textarea>
+                    <label>Опис завдання</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Відправити запит</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-window glass-panel">
+            <button id="closeDetailsBtn" class="close-icon">&times;</button>
+            
+            <div class="details-content-box">
+                <h3 id="detailsTitle" class="modal-title text-gradient">Заголовок</h3>
+                <div id="detailsBody" class="details-text">
+                    </div>
+            </div>
+
+            <button id="orderFromDetailsBtn" class="btn btn-primary btn-full mt-20">
+                Замовити цю послугу <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <a href="https://t.me/Fmx_22" target="_blank" class="floating-contact-btn">
+        <div class="icon-box">
+            <i class="fab fa-telegram-plane"></i>
+        </div>
+        <div class="pulse-ring"></div>
+    </a>
+</body>
+</html>
