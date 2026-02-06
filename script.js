@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pagesDisplay: document.getElementById('pagesValue'), 
         uniqueDisplay: document.getElementById('uniqueValue'), 
         
-        // Модальні вікна
+
         orderModal: document.getElementById('modalOverlay'),
         closeOrderBtn: document.getElementById('closeModalBtn'),
         orderForm: document.getElementById('orderForm'),
@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         detailsBody: document.getElementById('detailsBody'),
         orderFromDetailsBtn: document.getElementById('orderFromDetailsBtn'),
 
-        // Елементи інтерфейсу
         orderBtns: document.querySelectorAll('#navOrderBtn, #calcOrderBtn, .btn-order-direct, .mobile-btn'),
         detailsBtns: document.querySelectorAll('.btn-text'),
         hamburger: document.querySelector('.hamburger'),
@@ -31,25 +30,38 @@ document.addEventListener('DOMContentLoaded', () => {
         navItems: document.querySelectorAll('.nav-item')
     };
 
-    const workStandards = {
-        '250': 5,  
-        '300': 10,  
-        '350': 10,  
-        '1000': 25, 
-        '1500': 30, 
-        '5000': 50, 
-        '7000': 60  
+    const pricingRules = {
+        '250': { 
+            stdPages: 10, pagePrice: 5,   dayPrice: 10,  uniqueStep: 5, uniquePrice: 5 
+        },
+        '300': { 
+            stdPages: 10, pagePrice: 5,   dayPrice: 10,  uniqueStep: 5, uniquePrice: 5 
+        },
+        '350': { 
+            stdPages: 10, pagePrice: 5,   dayPrice: 10,  uniqueStep: 5, uniquePrice: 5 
+        },
+        '1000': { 
+            stdPages: 25, pagePrice: 10,  dayPrice: 15,  uniqueStep: 5, uniquePrice: 10 
+        },
+        '1500': { 
+            stdPages: 30, pagePrice: 10,  dayPrice: 30,  uniqueStep: 1, uniquePrice: 5 
+        },
+        '5000': { 
+            stdPages: 50, pagePrice: 50,  dayPrice: 100, uniqueStep: 1, uniquePrice: 25 
+        },
+        '7000': { 
+            stdPages: 60, pagePrice: 15,  dayPrice: 125, uniqueStep: 1, uniquePrice: 30 
+        }
     };
-
     const servicesInfo = {
         'it': {
             title: 'IT Розробка & Програмування',
             content: `
                 <p>Технічні завдання будь-якої складності:</p>
                 <ul>
-                    <li><strong>Web:</strong> HTML5, CSS3, JS, React, PHP.</li>
-                    <li><strong>Desktop:</strong> C#, C++, Python, Java.</li>
-                    <li><strong>Scripts:</strong> Боти, парсинг, автоматизація.</li>
+                    <li><strong>Web:</strong>Laravel,Vue,React,NodeJs</li>
+                    <li><strong>Мобільні додатки:</strong>Kotlin Flutter/Dart</li>
+                    <li><strong>Додатки під Windows:</strong>C# , C++ </li>
                 </ul>`
         },
         'text': {
@@ -74,38 +86,33 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Переклади',
             content: `
                 <p>Професійний переклад (EN, DE, PL, UA):</p>
-                <ul><li>Технічний та художній переклад.</li></ul>`
+                <ul><li>Технічний  переклад.</li></ul>`
         }
     };
+
     function updateCalculator() {
         if(!UI.calcType) return;
+
         let basePrice = parseInt(UI.calcType.value);
-        let standardPages = workStandards[basePrice] || 10;
+        let rule = pricingRules[basePrice] || pricingRules['250']; 
+
+        let finalPrice = basePrice;
+        let pages = parseInt(UI.calcPages.value);
+        if (pages > rule.stdPages) {
+            finalPrice += (pages - rule.stdPages) * rule.pagePrice;
+        }
         let days = parseInt(UI.calcDays.value);
-        let urgencyMultiplier = 1 + ((30 - days) / 35); 
-
-        let selectedPages = parseInt(UI.calcPages.value);
-        let pagesMultiplier = 1;
-
-        if (selectedPages > standardPages) {
-            pagesMultiplier = 1 + ((selectedPages - standardPages) / standardPages);
-        } else if (selectedPages < standardPages) {
-            // Якщо сторінок менше -> ціна падає, але не дуже сильно (фіксована база)
-            pagesMultiplier = 1 - ((standardPages - selectedPages) / standardPages * 0.4); 
+        if (days < 30) {
+            finalPrice += (30 - days) * rule.dayPrice;
         }
         let unique = parseInt(UI.calcUnique.value);
-        let uniqueMultiplier = 1;
-
         if (unique > 70) {
-            uniqueMultiplier = 1 + ((unique - 70) * 0.015);
+            let extra = unique - 70;
+            let multiplier = Math.ceil(extra / rule.uniqueStep);
+            finalPrice += multiplier * rule.uniquePrice;
         }
-
-        // ФІНАЛЬНИЙ РОЗРАХУНОК
-        let finalPrice = Math.round(basePrice * urgencyMultiplier * pagesMultiplier * uniqueMultiplier);
-
-        // Оновлення тексту на екрані
-        if(UI.daysDisplay) UI.daysDisplay.textContent = days + (days === 1 ? ' день' : (days < 5 ? ' дні' : ' днів'));
-        if(UI.pagesDisplay) UI.pagesDisplay.textContent = selectedPages + ' стор.';
+        if(UI.daysDisplay) UI.daysDisplay.textContent = days + ' днів';
+        if(UI.pagesDisplay) UI.pagesDisplay.textContent = pages + ' стор.';
         if(UI.uniqueDisplay) UI.uniqueDisplay.textContent = unique + '%';
 
         animatePriceChange(finalPrice);
@@ -113,22 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animatePriceChange(newPrice) {
         if(!UI.priceDisplay) return;
-        UI.priceDisplay.style.textShadow = "0 0 25px #00f3ff";
-        UI.priceDisplay.style.color = "#fff";
         UI.priceDisplay.textContent = newPrice;
-        
-        setTimeout(() => {
-            UI.priceDisplay.style.color = ""; 
-            UI.priceDisplay.style.textShadow = ""; 
-        }, 250);
     }
     if(UI.calcType) {
-        UI.calcType.addEventListener('change', updateCalculator);
+        UI.calcType.addEventListener('change', () => {
+            let val = UI.calcType.value;
+            let rule = pricingRules[val] || pricingRules['250'];
+            UI.calcPages.value = rule.stdPages; 
+            
+            updateCalculator();
+        });
         UI.calcDays.addEventListener('input', updateCalculator);
         if(UI.calcPages) UI.calcPages.addEventListener('input', updateCalculator);
         if(UI.calcUnique) UI.calcUnique.addEventListener('input', updateCalculator);
         
-        updateCalculator(); 
+        updateCalculator();
     }
     window.openModal = function(serviceName = '') { 
         if(UI.taskInput) UI.taskInput.value = '';
@@ -175,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         UI.detailsModal.classList.remove('active');
         document.body.style.overflow = '';
     }
+
     UI.orderBtns.forEach(btn => btn.addEventListener('click', openOrderModalWrapper));
     UI.detailsBtns.forEach(btn => btn.addEventListener('click', openDetailsModal));
 
@@ -205,9 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         UI.orderForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // 🔥 ВСТАВ СЮДИ СВОЇ ДАНІ 🔥
-            const BOT_TOKEN = 'ВАШ_ТОКЕН_ТУТ'; 
-            const CHAT_ID = 'ВАШ_CHAT_ID';      
+            const BOT_TOKEN = '8359961042:AAE6bBO2uptp6Lja0Y95POI74CJxdSKDbBg'; 
+            const CHAT_ID = '794256381';      
 
             const inputs = UI.orderForm.querySelectorAll('input');
             const name = inputs[0].value;
@@ -240,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitBtn.style = ''; 
                     }, 2000);
                 } else {
-                    alert("Помилка: перевір Token бота.");
+                    alert("Помилка налаштування Telegram.");
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalText;
                 }
@@ -257,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             UI.navLinks.classList.toggle('active');
             
-            // Зміна іконки (bars <-> times)
             const icon = UI.hamburger.querySelector('i');
             if (icon) {
                 if(UI.navLinks.classList.contains('active')) {
